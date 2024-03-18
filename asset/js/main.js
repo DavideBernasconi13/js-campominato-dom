@@ -80,10 +80,10 @@ function endGame(isVictory) {
     if (isVictory === true) {
         alert('Hai vinto!');
     } else {
-        let endGameScreen = document.createElement('div');
-        endGameScreen.setAttribute('class', 'end');
+        let endGameScreen = document.querySelector('.end');
+        endGameScreen.classList.remove('d-none');
+        endGameScreen.classList.add('d-flex');
         endGameScreen.innerHTML = "Game over";
-        document.appendChild(endGameScreen);
         console.log(endGameScreen);
         // aggiorna la pagina ->location.reload();
     }
