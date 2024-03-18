@@ -1,8 +1,11 @@
+
 document.getElementById('btn').addEventListener('click', function () {
-    console.log('pippo');
+    // determino il numero di bombe
     const level = parseInt(document.getElementById('level').value);
-    console.log(level);
+    //console.log(level);
+    //faccio partire il gioco
     newGame(level);
+
 })
 
 
@@ -10,14 +13,25 @@ document.getElementById('btn').addEventListener('click', function () {
 //!!passo il valore numberOfCell che poi richiamo con la variabile level!!
 
 function newGame(numberOfCell) {
+    // determino le celle casuali e randomiche dove ci saranno le bombe
+    const bombsList = [];
+    const totalBombs = 16;
+
+    while (bombsList.length < totalBombs) {
+        const number = Math.floor(Math.random() * numberOfCell) + 1;
+        if (!bombsList.includes(number)) {
+            bombsList.push(number);
+        }
+    }
+    console.log('Le celle che contengono le bombe sono:', bombsList);
     const grid = document.getElementById('grid');
     console.log(grid);
     //pulisco il grid da eventuali griglie generate
     grid.innerHTML = '';
     //ciclo per il numero di celle e creo elemento
-    for (let i = 0; i < numberOfCell; i++) {
+    for (let i = 1; i <= numberOfCell; i++) {
         const newSquare = document.createElement('div');
-        newSquare.innerText = i + 1;
+        newSquare.innerText = i;
         grid.appendChild(newSquare);
         newSquare.classList.add('cell');
         // condizione per aggiungere le classi CSS 
@@ -27,9 +41,14 @@ function newGame(numberOfCell) {
             newSquare.classList.add('cell-hard');
         }
 
-
         newSquare.addEventListener('click', function () {
-            newSquare.classList.add('clicked');
+            if (bombsList.includes(i)) {
+                newSquare.classList.add('game-over');
+                console.log('game over');
+            } else {
+                newSquare.classList.add('clicked');
+            }
+
         })
     }
 
@@ -38,20 +57,3 @@ function newGame(numberOfCell) {
 
 
 // funzione per generare un numero random unico
-
-function generateUniqueRandomNumber(min, max, blacklist) {
-    console.log("crash");
-    let isFound = false;
-    let randomNumber;
-    while (isFound === false) {
-        randomNumber = Math.floor(Math.random() * max + 1);
-        if (blacklist.includes(randomNumber) === false) {
-            isFound = true;
-        }
-        console.log(randomNumber);
-        return randomNumber;
-
-    }
-}
-
-generateUniqueRandomNumber(1, 9, [1, 3, 5, 7, 8, 9]);
