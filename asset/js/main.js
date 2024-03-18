@@ -8,6 +8,7 @@ document.getElementById('btn').addEventListener('click', function () {
 
 })
 
+let score = 0;
 
 //funzione che crea la griglia, 
 //!!passo il valore numberOfCell che poi richiamo con la variabile level!!
@@ -50,12 +51,31 @@ function newGame(numberOfCell) {
 
             else {
                 newSquare.classList.add('clicked');
+                scoreUpdate();
             }
 
         })
     }
+    //riporto il punteggio pari a 0
+    score = 0;
+}
 
-    console.log("crash");
+
+function scoreUpdate() {
+
+    let scoreCounter = document.querySelector('.scoreCounter');
+
+
+    //aggiorno il numero del punteggio
+    score++
+    console.log(score);
+    // lo inserisco nello score counter (contatore)
+    /* ! padStart = funziona solo con le stringhe e permette di riempire di un numero di caratteri definito
+   ! primo valore: numero di caratteri, secondo valore: carattere riempitivo */
+    scoreCounter.innerText = String(score).padStart(5, 0);
+
+    // Controllo se l'utente ha vinto
+    //if (score === maxScore) endGame(true);
 }
 
 
