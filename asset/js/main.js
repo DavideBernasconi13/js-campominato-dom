@@ -36,3 +36,22 @@ function newGame(numberOfCell) {
     console.log("crash");
 }
 
+
+// funzione per generare un numero random unico
+
+function generateUniqueRandomNumber(min, max, blacklist) {
+    console.log("crash");
+    let isFound = false;
+    let randomNumber;
+    while (isFound === false) {
+        randomNumber = Math.floor(Math.random() * max + 1);
+        if (blacklist.includes(randomNumber) === false) {
+            isFound = true;
+        }
+        console.log(randomNumber);
+        return randomNumber;
+
+    }
+}
+
+generateUniqueRandomNumber(1, 9, [1, 3, 5, 7, 8, 9]);
