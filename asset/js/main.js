@@ -60,11 +60,10 @@ function newGame(numberOfCell) {
     score = 0;
 }
 
-
+//funzione update score
 function scoreUpdate() {
-
+    //prendo il div dall'HTML 
     let scoreCounter = document.querySelector('.scoreCounter');
-
 
     //aggiorno il numero del punteggio
     score++
@@ -73,17 +72,19 @@ function scoreUpdate() {
     /* ! padStart = funziona solo con le stringhe e permette di riempire di un numero di caratteri definito
    ! primo valore: numero di caratteri, secondo valore: carattere riempitivo */
     scoreCounter.innerText = String(score).padStart(5, 0);
-
-    // Controllo se l'utente ha vinto
-    //if (score === maxScore) endGame(true);
 }
 
 
 // funzione fine del gioco
 function endGame(isVictory) {
     if (isVictory === true) {
-        alert('Hai vinto!')
+        alert('Hai vinto!');
     } else {
-        location.reload();
+        let endGameScreen = document.createElement('div');
+        endGameScreen.setAttribute('class', 'end');
+        endGameScreen.innerHTML = "Game over";
+        document.appendChild(endGameScreen);
+        console.log(endGameScreen);
+        // aggiorna la pagina ->location.reload();
     }
 }
