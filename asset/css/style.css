@@ -1,0 +1,93 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* ! General e utility */
+/* -------------------------------------------------------------------------------- */
+body {
+    font-family: "Prompt", sans-serif;
+    background-color: #444;
+}
+
+.d-none {
+    display: none;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* ! Header */
+/* -------------------------------------------------------------------------------- */
+header {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+}
+
+#btn {
+    background-color: #fff;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* ! Grid */
+/* -------------------------------------------------------------------------------- */
+main {
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0px;
+}
+
+#grid {
+    width: 550px;
+    height: 550px;
+    margin: 0 auto;
+    border: 2px solid #fff;
+}
+
+.cell {
+    height: calc(100% / 10);
+    width: calc(100% / 10);
+    float: left;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.cell-medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.cell-hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.clicked {
+    background-color: coral;
+}
+
+.clearfix::after {
+    content: '';
+    clear: both;
+    display: table;
+}
