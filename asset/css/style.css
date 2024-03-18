@@ -83,7 +83,7 @@ main {
 }
 
 .clicked {
-    background-color: coral;
+    background-color: rgb(58, 89, 180);
 }
 
 .clearfix::after {

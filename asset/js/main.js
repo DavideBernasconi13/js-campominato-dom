@@ -45,7 +45,10 @@ function newGame(numberOfCell) {
             if (bombsList.includes(i)) {
                 newSquare.classList.add('game-over');
                 console.log('game over');
-            } else {
+                endGame(false);
+            }
+
+            else {
                 newSquare.classList.add('clicked');
             }
 
@@ -56,4 +59,11 @@ function newGame(numberOfCell) {
 }
 
 
-// funzione per generare un numero random unico
+// funzione fine del gioco
+function endGame(isVictory) {
+    if (isVictory === true) {
+        alert('Hai vinto!')
+    } else {
+        location.reload();
+    }
+}
