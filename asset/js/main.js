@@ -1,6 +1,6 @@
 
 document.getElementById('btn').addEventListener('click', function () {
-    // determino il numero di bombe
+    // determino il numero di celle
     const level = parseInt(document.getElementById('level').value);
     //console.log(level);
     //faccio partire il gioco
@@ -54,7 +54,7 @@ function newGame(numberOfCell) {
                 scoreUpdate();
             }
 
-        })
+        }, /* non far ripetere il click*/ { once: true })
     }
     //riporto il punteggio pari a 0
     score = 0;
@@ -71,7 +71,8 @@ function scoreUpdate() {
     // lo inserisco nello score counter (contatore)
     /* ! padStart = funziona solo con le stringhe e permette di riempire di un numero di caratteri definito
    ! primo valore: numero di caratteri, secondo valore: carattere riempitivo */
-    scoreCounter.innerText = String(score).padStart(5, 0);
+    scoreCounter.innerHTML = "Score:" + " ";
+    scoreCounter.innerText += String(score).padStart(5, 0);
 }
 
 
@@ -85,6 +86,13 @@ function endGame(isVictory) {
         endGameScreen.classList.add('d-flex');
         endGameScreen.innerHTML = "Game over";
         console.log(endGameScreen);
-        // aggiorna la pagina ->location.reload();
+        // per far ricaricare la pagina al gameover e nascondere il ricarica griglia
+        btn.classList.add('d-none');
+        const update = document.getElementById('update');
+        update.classList.remove('d-none');
+        update.addEventListener('click', function () {
+            location.reload();
+        })
+
     }
 }
